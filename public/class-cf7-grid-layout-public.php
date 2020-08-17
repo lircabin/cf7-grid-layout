@@ -1101,6 +1101,11 @@ class Cf7_Grid_Layout_Public {
       //validation for non-deprecated plugins (v2.5.0+).
       if(!isset($data[$tag['name']])) continue; //it was removed by some plugin.
 			$type = $tag['type'];
+			//Hotfix for dynamic select as required
+			if($type == 'dynamic_select*')
+			{
+			$type = 'checkbox*';
+			}
 		  //check to see if this field is an array (table or tab or both).
       $tag_types[$tag['name']] = $tag['type'];
       $field_type = self::field_type($tag['name'], $cf7form->id());
